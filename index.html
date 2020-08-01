@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSPC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css"
+      integrity="sha512-ADrqa2PY1TZtb/MoLZIZu/Z/LlPaWQeDMBV73EMwjGam43/JJ5fqW38Rq8LJOVGCDfrJeOMS3Q/wRUVzW5DkjQ=="
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          JSPC
+        </h1>
+        <p class="subtitle">
+          Welcome to JSPC, the online javascript powered VM!
+        </p>
+      </div>
+      <section class="section">
+        <div class="container">
+          <h2 class="paragraph">
+            <p>
+              JSPC is a virtual computer built with javascript and runs in
+              your<br />
+              browser. It's not technicaly a VM, but it does emulate a
+              computer.<br />
+              The operating system that is used is JSOS the javascript
+              operating<br />
+              system.
+            </p>
+          </h2>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <h1 class="title">Start Now</h1>
+          <h2 class="subtitle">
+            To start click the "Launch Now" Button to launch the VM!
+          </h2>
+          <script>
+            $(document).ready(function() {
+              $("#launchvm").click(function() {
+                window.location.replace("/vm.html");
+              });
+            });
+          </script>
+          <button class="button is-primary" id="launchvm">Launch Now</button>
+          <button class="button is-link">Docs</button>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>
