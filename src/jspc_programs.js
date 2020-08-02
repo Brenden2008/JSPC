@@ -4,7 +4,7 @@ function startTerminal() {
   var twindow = document.createElement("div");
   twindow.setAttribute("id", "terminalwindow");
   var tbox = document.getElementById("appbox");
-  element.appendChild(twindow);
+  tbox.appendChild(twindow);
 
   //Actualy Start the code
   jQuery(function($, undefined) {
