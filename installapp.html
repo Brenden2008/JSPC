@@ -67,15 +67,18 @@
           if (err !== null) {
             alert("Something went wrong: " + err);
           } else {
+            //Get JSON Data
             appname = data.appname;
             appdesc = data.appdesc;
             appurls = data.appurls;
             startupapp = data.startupapp;
             appsetupurl = data.appsetupurl;
 
+            //Drop URLS to LocalStorage
             var appurlsjson = JSON.stringify(data.appurls);
             localStorage.setItem(appname, JSON.stringify(data.appurls));
 
+            //Drop The Installed App To LocalStorage
             var installedapps2 = localStorage.getItem("installedapps");
             var installedappsparced = JSON.parse(installedapps2);
             installedappsparced.push(appname);
@@ -83,6 +86,10 @@
               "installedapps",
               JSON.stringify(installedappsparced)
             );
+            //Run The Setup Script
+            var btn = document.createElement("script");
+            btn.setAttribute("src", data.appsetupurl);
+            document.head.appendChild(btn);
           }
         });
       }
