@@ -21,8 +21,64 @@
       href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"
       rel="stylesheet"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js"
+      integrity="sha512-mz0EI+Ay1uIJP7rZEX8C/JlTAcHRIQ8Sny4vxmmj8MSzDJgG9NxxY2pUmOGv1lO7imFIFMyjjCzEXEywNgaUdQ=="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jcubic/static/js/wcwidth.js"></script>
+    <script>
+      //Javascript Interpretor by Jquery terminal
+      function startTerminal() {
+        //Create App Container
+        var twindow = document.createElement("div");
+        twindow.setAttribute("id", "terminalwindow");
+        var tbox = document.getElementById("appboxrun");
+        tbox.appendChild(twindow);
+
+        //Actualy Start the code
+        jQuery(function($, undefined) {
+          $("#terminalwindow").terminal(
+            function(command) {
+              if (command !== "") {
+                try {
+                  var result = window.eval(command);
+                  if (result !== undefined) {
+                    this.echo(new String(result));
+                  }
+                } catch (e) {
+                  this.error(new String(e));
+                }
+              } else {
+                this.echo("");
+              }
+            },
+            {
+              greetings: "JavaScript Interpreter Version 1.0",
+              name: "js_inter",
+              height: 200,
+              prompt: "js> "
+            }
+          );
+        });
+      }
+    </script>
+    <script>
+      function exitapp() {
+        var appboxapp = document.getElementById("appboxrun");
+        appboxapp.remove();
+        var appwindow = document.createElement("div");
+        appwindow.setAttribute("id", "appboxrun");
+        var appboxdiv = document.getElementById("appbox");
+        appboxdiv.appendChild(appwindow);
+      }
+    </script>
+    <script>
+      localStorage.setItem("exit_cmd", "exitapp()");
+      localStorage.setItem("js_cmd", "startTerminal()");
+      localStorage.setItem("restart_cmd", "location.reload()");
+    </script>
   </head>
   <body>
     <div
@@ -31,43 +87,30 @@
       class="Terminal"
     ></div>
     <script>
-      jQuery(function($, undefined) {
-        $("#terminal").terminal(
-          function(command) {
-            if (command !== "") {
-              try {
-                var result = window.eval(command);
-                if (result !== undefined) {
-                  this.echo(new String(result));
-                }
-              } catch (e) {
-                this.error(new String(e));
-              }
-            } else {
-              this.echo("");
-            }
-          },
-          {
-            greetings: "JavaScript Interpreter",
-            name: "js_demo",
-            height: 200,
-            prompt: "js> "
-          }
+      //Terminal
+      $("#terminal").terminal(
+        function(command) {
+          execommand = localStorage.getItem(command + "_cmd");
+          eval(execommand);
+        },
+        {
+          greetings: "Welcome to JSOS Version 1.0",
+          prompt: ">",
+          height: 400,
+          name: "JSOS"
+        }
+      );
+    </script>
+    <script>
+      $(function() {
+        $("#includedContent").load(
+          "https://techpro864.gitlab.io/jspc/test.html"
         );
       });
     </script>
-    <script>
-      //var term = new Terminal();
-      //term.open(document.getElementById("terminal"));
-      //term.write(
-      // "Welcome to JSOS. To view the installed programs type programs"
-      // );
-      // term.on("key", (key, ev) => {
-      //   console.log(key.charCodeAt(0));
-      //  if (key.charCodeAt(0) == 13) term.write("\n");
-      // term.write(key);
-      // });
-      //term.on("data", data => {});
-    </script>
+    <div id="includedContent"></div>
+    <div id="appbox">
+      <div id="appboxrun"></div>
+    </div>
   </body>
 </html>
