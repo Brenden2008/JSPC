@@ -71,7 +71,7 @@
             appname = data.appname;
             appdesc = data.appdesc;
             appurls = data.appurls;
-            startupapp = data.startupapp;
+            //startupapp = data.startupapp;
             appsetupurl = data.appsetupurl;
 
             //Drop URLS to LocalStorage
@@ -93,13 +93,17 @@
                 btn.setAttribute("src", data.appsetupurl);
                 document.head.appendChild(btn);
               } catch (err) {
-                alert("The setup script of app name: " + )
+                alert(
+                  "The setup script of app name: " +
+                    data.appdisplayname +
+                    "\nHas crashed, We will exit the installation now."
+                );
               }
             } else {
               alert(
                 "The installation of app name: " +
                   data.appdisplayname +
-                  "\nHas complete and is now ready for use."
+                  "\nHas completed and is now ready for use."
               );
             }
           }
