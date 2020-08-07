@@ -38,9 +38,9 @@
         tbox.appendChild(twindow);
 
         //Actualy Start the code
-        jQuery(function($, undefined) {
+        jQuery(function ($, undefined) {
           $("#terminalwindow").terminal(
-            function(command) {
+            function (command) {
               if (command !== "") {
                 try {
                   var result = window.eval(command);
@@ -83,26 +83,32 @@
   <body>
     <div
       id="terminal"
-      style="position:relative; width:100%; height:100%"
+      style="position: relative; width: 100%; height: 100%;"
       class="Terminal"
     ></div>
     <script>
       //Terminal
       $("#terminal").terminal(
-        function(command) {
+        function (command) {
           execommand = localStorage.getItem(command + "_cmd");
           eval(execommand);
         },
         {
-          greetings: "Welcome to JSOS Version 1.0",
+          greetings:
+            "Welcome to JSOS Version 1.0\n[[;yellow;]NEW: Now With Native PyPy.js Support!]",
           prompt: ">",
-          height: 400,
+          height: 500,
           name: "JSOS"
         }
       );
     </script>
     <script>
-      $(function() {
+      $("#terminal").terminal(function (command) {
+        alert(command);
+      });
+    </script>
+    <script>
+      $(function () {
         $("#includedContent").load(
           "https://techpro864.gitlab.io/jspc/test.html"
         );

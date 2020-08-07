@@ -1,0 +1,10 @@
+{
+  "appname": "",
+  "appdesc": "",
+  "appurls": [
+    "example.com/app.js",
+    "example.com/dependency1.js",
+    "example.com/dependency2.js"
+  ],
+  "appsetupurl": "Use If you need to do something special to install your app"
+}
