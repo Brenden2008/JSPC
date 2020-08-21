@@ -9,5 +9,5 @@
   ],
   "hassetupscript": true,
   "startfunction": "",
-  "appsetupurl": "src/index.js"
+  "appsetupurl": "demo/demoscript.js"
 }

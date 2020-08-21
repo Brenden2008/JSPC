@@ -42,14 +42,7 @@
           <h2 class="subtitle">
             To start click the "Launch Now" Button to launch the VM!
           </h2>
-          <script>
-            $(document).ready(function() {
-              $("#launchvm").click(function() {
-                window.location.replace("/vm.html");
-              });
-            });
-          </script>
-          <button class="button is-primary" id="launchvm">Launch Now</button>
+          <button class="button is-primary" id="launchvm" onclick="window.location.replace('/vm.html')">Launch Now</button>
           <button class="button is-link">Docs</button>
         </div>
       </section>

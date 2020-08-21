@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JSPC - Install Application</title>
+    <title id="webtitle">JSPC - Install Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -59,6 +59,7 @@
           appurls = data.appurls;
           startupapp = data.startupapp;
           appsetupurl = data.appsetupurl;
+          appdisplayname = data.appdisplayname;
         }
       });
 
@@ -115,6 +116,47 @@
         });
       }
     </script>
-    <div id="test"></div>
+    <div id="AppDIV">
+      <section class="section">
+        <div class="container">
+          <h1 class="title">
+            Install App
+          </h1>
+          <p class="subtitle" id="installdesc">
+            Your about to install {[appdisplayname]}
+          </p>
+        </div>
+        <section class="section">
+          <div class="container">
+            <h2 class="paragraph">
+              <p>
+                JSPC is a virtual computer built with javascript and runs in
+                your<br />
+                browser. It's not technicaly a VM, but it does emulate a
+                computer.<br />
+                The operating system that is used is JSOS the javascript
+                operating<br />
+                system.
+              </p>
+            </h2>
+          </div>
+        </section>
+      </section>
+      <script>
+      getJSON(appjson, function(err, data) {
+        if (err !== null) {
+          alert("Something went wrong: " + err);
+        } else {
+          appname = data.appname;
+          appdesc = data.appdesc;
+          appurls = data.appurls;
+          startupapp = data.startupapp;
+          appsetupurl = data.appsetupurl;
+          appdisplayname = data.appdisplayname;
+          document.getElementById("installdesc").innerHTML = "Your about to install: " + data.appdisplayname
+        }
+      });
+        </script>
+    </div>
   </body>
 </html>
