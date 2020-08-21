@@ -82,6 +82,22 @@
   </head>
   <body>
     <script>
+      $(function () {
+        $("#includedContent").load(
+          "https://techpro864.gitlab.io/jspc/test.html"
+        );
+      });
+    </script>
+    <div id="includedContent"></div>
+    <div id="appbox">
+        <div
+      id="terminal"
+      style="position: relative; width: 100%; height: 100%;"
+      class="Terminal"
+    ></div>
+      <div id="appboxrun"></div>
+    </div>
+        <script>
       //Terminal
       $("#terminal").terminal(
         function (command) {
@@ -111,21 +127,5 @@
         }
       );
     }</script>
-    <script>
-      $(function () {
-        $("#includedContent").load(
-          "https://techpro864.gitlab.io/jspc/test.html"
-        );
-      });
-    </script>
-    <div id="includedContent"></div>
-    <div id="appbox">
-        <div
-      id="terminal"
-      style="position: relative; width: 100%; height: 100%;"
-      class="Terminal"
-    ></div>
-      <div id="appboxrun"></div>
-    </div>
   </body>
 </html>
