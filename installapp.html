@@ -165,7 +165,7 @@
         }
       });
 
-      function installapp() {
+      async function installapp() {
         getJSON(appjson, function (err, data) {
           if (err !== null) {
             alert("Something went wrong: " + err);
