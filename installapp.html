@@ -27,7 +27,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
     <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jcubic/static/js/wcwidth.js"></script>
     <script>
@@ -38,92 +41,98 @@
       function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
       }
-      </script>
-      <script>
-        $( function() {
-          var progressTimer,
-            progressbar = $( "#progressbar" ),
-            progressLabel = $( ".progress-label" ),
-            dialogButtons = [{
+    </script>
+    <script>
+      $(function () {
+        var progressTimer,
+          progressbar = $("#progressbar"),
+          progressLabel = $(".progress-label"),
+          dialogButtons = [
+            {
               text: "Cancel Install",
               click: closeDownload
-            }],
-            dialog = $( "#dialog" ).dialog({
-              autoOpen: false,
-              closeOnEscape: false,
-              resizable: false,
-              buttons: dialogButtons,
-              open: function() {
-                progressTimer = setTimeout( progress, getRndInteger(0000,9999) );
-              },
-              beforeClose: function() {
-                downloadButton.button( "option", {
-                  disabled: false,
-                  label: "Start Install"
-                });
-              }
-            }),
-            downloadButton = $( "#downloadButton" )
-              .button()
-              .on( "click", function() {
-                $( this ).button( "option", {
-                  disabled: true,
-                  label: "Installing..."
-                });
-                dialog.dialog( "open" );
-              });
-       
-          progressbar.progressbar({
-            value: false,
-            change: function() {
-              progressLabel.text( "Current Progress: " + progressbar.progressbar( "value" ) + "%" );
+            }
+          ],
+          dialog = $("#dialog").dialog({
+            autoOpen: false,
+            closeOnEscape: false,
+            resizable: false,
+            buttons: dialogButtons,
+            open: function () {
+              progressTimer = setTimeout(progress, getRndInteger(0000, 4000));
             },
-            complete: function() {
-              progressLabel.text( "Complete!" );
-              dialog.dialog( "option", "buttons", [{
+            beforeClose: function () {
+              downloadButton.button("option", {
+                disabled: false,
+                label: "Start Install"
+              });
+            }
+          }),
+          downloadButton = $("#downloadButton")
+            .button()
+            .on("click", function () {
+              $(this).button("option", {
+                disabled: true,
+                label: "Installing..."
+              });
+              dialog.dialog("open");
+            });
+
+        progressbar.progressbar({
+          value: false,
+          change: function () {
+            progressLabel.text(
+              "Current Progress: " + progressbar.progressbar("value") + "%"
+            );
+          },
+          complete: function () {
+            progressLabel.text("Complete!");
+            dialog.dialog("option", "buttons", [
+              {
                 text: "Close",
                 click: closeDownload
-              }]);
-              $(".ui-dialog button").last().trigger( "focus" );
-            }
-          });
-       
-          function progress() {
-            var val = progressbar.progressbar( "value" ) || 0;
-       
-            progressbar.progressbar( "value", val + Math.floor( Math.random() * 3 ) );
-       
-            if ( val <= 99 ) {
-              progressTimer = setTimeout( progress, 50 );
-            }
+              }
+            ]);
+            $(".ui-dialog button").last().trigger("focus");
           }
-       
-          function closeDownload() {
-            clearTimeout( progressTimer );
-            dialog
-              .dialog( "option", "buttons", dialogButtons )
-              .dialog( "close" );
-            progressbar.progressbar( "value", false );
-            progressLabel
-              .text( "Starting download..." );
-            downloadButton.trigger( "focus" );
+        });
+
+        function progress() {
+          var val = progressbar.progressbar("value") || 0;
+
+          progressbar.progressbar(
+            "value",
+            val + Math.floor(Math.random() * getRndInteger(000, 400))
+          );
+
+          if (val <= 99) {
+            progressTimer = setTimeout(progress, 50);
           }
-        } );
-        </script>
-        <style>
-        #progressbar {
-          margin-top: 20px;
         }
-       
-        .progress-label {
-          font-weight: bold;
-          text-shadow: 1px 1px 0 #fff;
+
+        function closeDownload() {
+          clearTimeout(progressTimer);
+          dialog.dialog("option", "buttons", dialogButtons).dialog("close");
+          progressbar.progressbar("value", false);
+          progressLabel.text("Starting download...");
+          downloadButton.trigger("focus");
         }
-       
-        .ui-dialog-titlebar-close {
-          display: none;
-        }
-        </style>
+      });
+    </script>
+    <style>
+      #progressbar {
+        margin-top: 20px;
+      }
+
+      .progress-label {
+        font-weight: bold;
+        text-shadow: 1px 1px 0 #fff;
+      }
+
+      .ui-dialog-titlebar-close {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <script>
