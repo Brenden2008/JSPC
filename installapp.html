@@ -114,7 +114,7 @@
           clearTimeout(progressTimer);
           dialog.dialog("option", "buttons", dialogButtons).dialog("close");
           progressbar.progressbar("value", false);
-          progressLabel.text("Starting download...");
+          progressLabel.text("Starting Install...");
           downloadButton.trigger("focus");
         }
       });
@@ -256,10 +256,10 @@
         });
       </script>
     </div>
-    <div id="dialog" title="File Download">
-      <div class="progress-label">Starting download...</div>
+    <div id="dialog" title="Application Install">
+      <div class="progress-label">Starting Insatll...</div>
       <div id="progressbar"></div>
     </div>
-    <button id="downloadButton">Start Download</button>
+    <button id="downloadButton">Start Install</button>
   </body>
 </html>
