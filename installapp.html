@@ -100,10 +100,13 @@
         function progress() {
           var val = progressbar.progressbar("value") || 0;
 
-          progressbar.progressbar("value", val + Math.floor(Math.random() * 8));
+          progressbar.progressbar(
+            "value",
+            val + Math.floor(Math.random() * getRndInteger(3, 12))
+          );
 
           if (val <= 99) {
-            progressTimer = setTimeout(progress, 500);
+            progressTimer = setTimeout(progress, getRndInteger(10, 300));
           }
         }
 
