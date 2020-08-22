@@ -235,6 +235,11 @@
             </h2>
           </div>
         </section>
+        <div id="dialog" title="Application Install">
+          <div class="progress-label">Starting Install...</div>
+          <div id="progressbar"></div>
+        </div>
+        <button id="downloadButton">Start Install</button>
       </section>
       <script>
         getJSON(appjson, function (err, data) {
@@ -257,10 +262,5 @@
         });
       </script>
     </div>
-    <div id="dialog" title="Application Install">
-      <div class="progress-label">Starting Install...</div>
-      <div id="progressbar"></div>
-    </div>
-    <button id="downloadButton">Start Install</button>
   </body>
 </html>
