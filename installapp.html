@@ -59,7 +59,7 @@
             resizable: false,
             buttons: dialogButtons,
             open: function () {
-              progressTimer = setTimeout(progress, getRndInteger(0000, 4000));
+              progressTimer = setTimeout(progress, 2500);
             },
             beforeClose: function () {
               downloadButton.button("option", {
@@ -102,7 +102,7 @@
 
           progressbar.progressbar(
             "value",
-            val + Math.floor(Math.random() * getRndInteger(000, 400))
+            val + Math.floor(Math.random() * 10)
           );
 
           if (val <= 99) {
