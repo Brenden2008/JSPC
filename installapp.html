@@ -35,11 +35,11 @@
   </head>
   <body>
     <script>
-      var getJSON = function(url, callback) {
+      var getJSON = function (url, callback) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.responseType = "json";
-        xhr.onload = function() {
+        xhr.onload = function () {
           var status = xhr.status;
           if (status === 200) {
             callback(null, xhr.response);
@@ -50,7 +50,7 @@
         xhr.send();
       };
 
-      getJSON(appjson, function(err, data) {
+      getJSON(appjson, function (err, data) {
         if (err !== null) {
           alert("Something went wrong: " + err);
         } else {
@@ -64,7 +64,7 @@
       });
 
       function installapp() {
-        getJSON(appjson, function(err, data) {
+        getJSON(appjson, function (err, data) {
           if (err !== null) {
             alert("Something went wrong: " + err);
           } else {
@@ -128,7 +128,7 @@
         </div>
         <section class="section">
           <div class="container">
-            <h2 class="paragraph">
+            <h2 class="paragraph" id="installtxt">
               <p>
                 JSPC is a virtual computer built with javascript and runs in
                 your<br />
@@ -143,20 +143,25 @@
         </section>
       </section>
       <script>
-      getJSON(appjson, function(err, data) {
-        if (err !== null) {
-          alert("Something went wrong: " + err);
-        } else {
-          appname = data.appname;
-          appdesc = data.appdesc;
-          appurls = data.appurls;
-          startupapp = data.startupapp;
-          appsetupurl = data.appsetupurl;
-          appdisplayname = data.appdisplayname;
-          document.getElementById("installdesc").innerHTML = "Your about to install: " + data.appdisplayname
-        }
-      });
-        </script>
+        getJSON(appjson, function (err, data) {
+          if (err !== null) {
+            alert("Something went wrong: " + err);
+          } else {
+            appname = data.appname;
+            appdesc = data.appdesc;
+            appurls = data.appurls;
+            startupapp = data.startupapp;
+            appsetupurl = data.appsetupurl;
+            appdisplayname = data.appdisplayname;
+            document.getElementById("installdesc").innerHTML =
+              "Your about to install: " + data.appdisplayname;
+            document.getElementById("webtitle").innerHTML =
+              "JSPC - " + "Installing: " + data.appdisplayname;
+            document.getElementById("installtxt").innerHTML =
+              "Description: " + data.appdesc;
+          }
+        });
+      </script>
     </div>
   </body>
 </html>
