@@ -59,8 +59,8 @@
             resizable: false,
             buttons: dialogButtons,
             open: function () {
-              progressTimer = setTimeout(progress, 2000);
               installapp();
+              progressTimer = setTimeout(progress, 2000);
             },
             beforeClose: function () {
               downloadButton.button("option", {
