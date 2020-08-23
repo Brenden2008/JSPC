@@ -81,17 +81,16 @@
     </script>
   </head>
   <body>
-    
     <div id="includedContent"></div>
     <div id="appbox">
-        <div
-      id="terminal"
-      style="position: relative; width: 100%; height: 100%;"
-      class="Terminal"
-    ></div>
+      <div
+        id="terminal"
+        style="position: relative; width: 100%; height: 100%;"
+        class="Terminal"
+      ></div>
       <div id="appboxrun"></div>
     </div>
-        <script>
+    <script>
       //Terminal
       $("#terminal").terminal(
         function (command) {
@@ -107,27 +106,31 @@
         }
       );
     </script>
-    <script>function reloadterm(){
-            //Terminal reload
-            var termwin = document.getElementById("terminal");
-        termwin.remove();
-        var termwinr = document.createElement("div");
-        termwinr.setAttribute("id", "terminal");
-        var appboxdiv = document.getElementById("appbox");
-        appboxdiv.appendChild(termwinr);
-      $("#terminal").terminal(
-        function (command) {
-          execommand = localStorage.getItem(command + "_cmd");
-          eval(execommand);
-        },
-        {
-          greetings:
-            "",
-          prompt: ">",
-          height: 500,
-          name: "JSOS"
+    <script>
+      function reloadterm() {
+        //Terminal reload
+        try {
+          var termwin = document.getElementById("terminal");
+          termwin.remove();
+        } finally {
+          var termwinr = document.createElement("div");
+          termwinr.setAttribute("id", "terminal");
+          var appboxdiv = document.getElementById("appbox");
+          appboxdiv.appendChild(termwinr);
         }
-      );
-    }</script>
+        $("#terminal").terminal(
+          function (command) {
+            execommand = localStorage.getItem(command + "_cmd");
+            eval(execommand);
+          },
+          {
+            greetings: "",
+            prompt: ">",
+            height: 500,
+            name: "JSOS"
+          }
+        );
+      }
+    </script>
   </body>
 </html>

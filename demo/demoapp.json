@@ -7,7 +7,9 @@
     "example.com/dependency1.js",
     "example.com/dependency2.js"
   ],
-  "hassetupscript": true,
-  "startfunction": "",
+  "hassetupscript": false,
+  "hascommand": true,
+  "startcommand": "demo",
+  "startfunctioncommand": "demoscriptapp()",
   "appsetupurl": "demo/demoscript.js"
 }
