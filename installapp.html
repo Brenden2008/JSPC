@@ -88,6 +88,7 @@
           },
           complete: function () {
             progressLabel.text("Complete!");
+            alert("Install Finished. Status: " + perr);
             dialog.dialog("option", "buttons", [
               {
                 text: "Close",
@@ -155,6 +156,7 @@
       getJSON(appjson, function (err, data) {
         if (err !== null) {
           alert("Something went wrong: " + err);
+          perr = err;
         } else {
           appname = data.appname;
           appdesc = data.appdesc;
@@ -169,6 +171,7 @@
         getJSON(appjson, function (err, data) {
           if (err !== null) {
             alert("Something went wrong: " + err);
+            return;
           } else {
             //Get JSON Data
             appname = data.appname;
@@ -214,6 +217,12 @@
                 "The installation of app name: " +
                   data.appdisplayname +
                   "\nHas completed and is now ready for use."
+              );
+            }
+            if (data.hascommand == true) {
+              localStorage.setItem(
+                data.startcommand + "_cmd",
+                data.startfunctioncommand
               );
             }
           }
